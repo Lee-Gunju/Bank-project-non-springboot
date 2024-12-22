@@ -1,6 +1,7 @@
 package org.bank.controller;
 
 import org.bank.repository.UserRepository;
+import org.bank.service.AccountService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -24,6 +25,9 @@ public class CreateLoginUserServlet extends HttpServlet {
         } else {
             // 새로운 사용자 계정 생성
             if (userRepository.createUser(username, password)) {
+                // 동일한 username과 초기 잔액 0으로 계좌 생성
+                AccountService accountService = new AccountService();
+                accountService.createAccount(null, username, 0.0);
                 response.sendRedirect("/view/login.jsp?success=user_created");
             } else {
                 response.sendRedirect("/view/createUser.jsp?error=creation_failed");

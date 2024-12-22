@@ -89,4 +89,17 @@ public class AccountRepository {
         }
         return accounts;
     }
+
+    public void update(Account account) {
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            String sql = "UPDATE accounts SET balance = ? WHERE accountHolderName = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setDouble(1, account.getBalance());
+                statement.setString(2, account.getAccountHolderName());
+                statement.executeUpdate();
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
 }

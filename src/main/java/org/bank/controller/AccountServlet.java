@@ -20,11 +20,17 @@ public class AccountServlet extends HttpServlet {
         Double balance = Double.parseDouble(request.getParameter("initialBalance"));
 
         try {
-            accountService.createAccount(null, name, balance);
-            response.sendRedirect("/view/index.jsp?success=true");
+            Account existingAccount = accountService.getAccountDetailByName(name);
+            if (existingAccount != null) {
+                existingAccount.setBalance(balance);
+                accountService.updateAccount(existingAccount);
+                response.sendRedirect("/view/index.jsp?success=balance_updated");
+            } else {
+                response.sendRedirect("/view/index.jsp?error=user_not_found");
+            }
         } catch (Exception e) {
-            e.printStackTrace(response.getWriter()); // 화면에 예외 메시지 출력
-            e.printStackTrace(); // 서버 콘솔에 예외 메시지 출력
+            e.printStackTrace(response.getWriter());
+            e.printStackTrace();
             response.sendRedirect("/view/index.jsp?error=true");
         }
     }

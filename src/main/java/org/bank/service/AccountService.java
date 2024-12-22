@@ -19,4 +19,9 @@ public class AccountService {
     public Account getAccountDetailByName(String accountHolderName) {
         return accountRepository.findByName(accountHolderName);
     }
+
+    public void updateAccount(Account account) {
+        accountRepository.update(account);
+        System.out.println("계좌가 업데이트되었습니다: " + account.getAccountHolderName());
+    }
 }
