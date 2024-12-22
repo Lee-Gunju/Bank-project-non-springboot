@@ -39,4 +39,21 @@ public class UserRepository {
         return false;
     }
 
+    public boolean userExists(String username) {
+        try (Connection connection = DatabaseConnection.getConnection()) {
+            String sql = "SELECT COUNT(*) FROM users WHERE username = ?";
+            try (PreparedStatement statement = connection.prepareStatement(sql)) {
+                statement.setString(1, username);
+                ResultSet resultSet = statement.executeQuery();
+                if (resultSet.next()) {
+                    return resultSet.getInt(1) > 0;
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 }

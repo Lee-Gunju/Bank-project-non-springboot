@@ -20,10 +20,12 @@ public class LoginServlet extends HttpServlet {
         String password = request.getParameter("password");
 
         // 데이터베이스를 사용한 인증 로직
-        if (userRepository.validateUser(username, password)) {
-            response.sendRedirect("/view/index.jsp");
+        if (!userRepository.userExists(username)) {
+            response.sendRedirect("/view/login.jsp?error=username_not_found");
+        } else if (!userRepository.validateUser(username, password)) {
+            response.sendRedirect("/view/login.jsp?error=incorrect_password");
         } else {
-            response.sendRedirect("/view/login.jsp?error=true");
+            response.sendRedirect("/view/index.jsp");
         }
     }
 }
