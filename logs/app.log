@@ -1,0 +1,16 @@
+2024-12-26 12:50:38 INFO  AccountService:15 - Account created: John doe, Initial Balance: 1000.0
+2024-12-26 12:54:09 INFO  AccountService:15 - Account created: John Doe, Initial Balance: 1000.0
+2024-12-26 12:54:47 INFO  AccountService:15 - Account created: John Doe, Initial Balance: 1000.0
+2024-12-26 12:55:08 INFO  AccountService:15 - Account created: Alice, Initial Balance: 2000.0
+2024-12-26 12:55:13 INFO  AccountService:15 - Account created: Alice, Initial Balance: 1000.0
+2024-12-26 12:55:13 INFO  AccountService:15 - Account created: Alice, Initial Balance: 3000.0
+2024-12-26 12:55:13 INFO  AccountService:29 - Account updated: 1155476
+2024-12-26 12:55:13 INFO  AccountService:15 - Account created: Alice, Initial Balance: 2000.0
+2024-12-26 12:58:18 INFO  AccountService:15 - Account created: Alice, Initial Balance: 1000.0
+2024-12-26 13:07:12 INFO  AccountService:15 - Account created: Alice, Initial Balance: 3000.0
+2024-12-26 13:07:12 INFO  AccountService:29 - Account updated: 1155476
+2024-12-26 13:07:18 INFO  AccountService:15 - Account created: Alice, Initial Balance: 2000.0
+2024-12-26 13:07:23 INFO  AccountService:15 - Account created: Alice, Initial Balance: 1000.0
+2024-12-26 13:08:49 INFO  AccountService:15 - Account created: Alice, Initial Balance: 3000.0
+2024-12-26 13:08:49 INFO  AccountService:29 - Account updated: 1155476
+2024-12-26 13:12:33 INFO  AccountController:30 - Fetching account details for ID: 1
