@@ -14,7 +14,7 @@ public class DatabaseConnection {
         }
     }
 
-    private static final String URL = "jdbc:mysql://localhost:3306/bank?useSSL=false&serverTimezone=UTC";
+    private static final String URL = "jdbc:mysql://220.126.251.67:3306/bank?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true";
     private static final String USER = "root";
     private static final String PASSWORD = "admin1234";
 
