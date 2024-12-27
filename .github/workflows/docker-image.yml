@@ -73,6 +73,12 @@ jobs:
         with:
           version: 'latest'
 
+      - name: Verify Kubernetes Access
+        env:
+          KUBECONFIG: ${{ secrets.KUBECONFIG }}
+        run: |
+          kubectl get nodes
+
       - name: Deploy to Kubernetes
         env:
           KUBECONFIG: ${{ secrets.KUBECONFIG }}
