@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: bank-project-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bank-project
+  template:
+    metadata:
+      labels:
+        app: bank-project
+    spec:
+      containers:
+        - name: bank-project-container
+          image: leegeonju/bank-project:latest # Docker Hub에 푸시한 이미지
+          ports:
+            - containerPort: 8080
