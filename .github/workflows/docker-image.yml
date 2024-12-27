@@ -59,29 +59,3 @@ jobs:
           context: .
           push: true
           tags: leegeonju/bank-project:${{ github.sha }}
-
-  deploy:
-    runs-on: ubuntu-latest
-    needs: docker
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up kubectl
-        uses: azure/setup-kubectl@v1
-        with:
-          version: 'latest'
-
-      - name: Verify Kubernetes Access
-        uses: steebchen/kubectl@v2.0.0
-        with:
-          config: ${{ secrets.KUBECONFIG }}
-          command: get nodes
-
-      - name: Deploy to Kubernetes
-        env:
-          KUBECONFIG: ${{ secrets.KUBECONFIG }}
-        run: |
-          kubectl set image deployment/bank-project-deployment bank-project-container=leegeonju/bank-project:${{ github.sha }}
-          kubectl rollout status deployment/bank-project-deployment
